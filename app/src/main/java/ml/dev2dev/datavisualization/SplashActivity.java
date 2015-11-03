@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -18,15 +22,25 @@ public class SplashActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+
+        Thread logoTimer = new Thread() {
+            public void run() {
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    Log.d("Exception", "Exception" + e);
+                } finally {
+                    startActivity(new Intent(SplashActivity.this, Appintro.class));
+                }
+                finish();
             }
-        });
+        };
+        logoTimer.start();
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
