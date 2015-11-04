@@ -1,53 +1,51 @@
 package ml.dev2dev.datavisualization;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
-public class Appintro extends AppCompatActivity {
-    static final int TOTAL_PAGES = 4;
+import com.github.paolorotolo.appintro.AppIntro;
+import com.github.paolorotolo.appintro.AppIntroFragment;
 
-    ViewPager pager;
-    PagerAdapter pagerAdapter;
-    LinearLayout circles;
-    Button btnSkip;
-    Button btnDone;
-    ImageButton btnNext;
-    boolean isOpaque = true;
+/**
+ * Created by benson on 10/13/15.
+ */
+public class Appintro extends AppIntro {
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appintro);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public void init(Bundle savedInstanceState) {
+        addSlide(AppIntroFragment.newInstance("Pied Piper", "WELCOME TO PIED PIPER",
+                R.drawable.splash,
+                 Color.parseColor("#272730")));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setBarColor(Color.parseColor("#2E9E48"));
+        setSeparatorColor(Color.parseColor("#2E9E48"));
+        showSkipButton(false);
+
+//        setVibrate(true);
+//        setVibrateIntensity(30);
+    }
+
+    private void loadMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSkipPressed() {
+//        Toast.makeText(getApplicationContext(),"You Skipped",Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onDonePressed() {
+//        Toast.makeText(getApplicationContext(),"You Done",Toast.LENGTH_SHORT).show();
+
+
+
+
     }
 
 }
