@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void logoutUser() {
         session.setLogin(false);
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
     }

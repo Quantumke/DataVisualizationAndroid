@@ -30,7 +30,7 @@ public class Myintro extends AppIntro {
     }
 
     private void loadMainActivity(){
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
@@ -45,7 +45,7 @@ public class Myintro extends AppIntro {
 //        Toast.makeText(getApplicationContext(),"You Done",Toast.LENGTH_SHORT).show();
 
 
-Intent a =  new Intent(Myintro.this, LoginActivity.class);
+Intent a =  new Intent(Myintro.this, Login.class);
         startActivity(a);
         finish();
 
