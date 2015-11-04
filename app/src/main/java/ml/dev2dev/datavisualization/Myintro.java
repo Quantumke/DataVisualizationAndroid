@@ -12,16 +12,17 @@ import com.github.paolorotolo.appintro.AppIntroFragment;
 /**
  * Created by benson on 10/13/15.
  */
-public class Appintro extends AppIntro {
+public class Myintro extends AppIntro {
 
     @Override
     public void init(Bundle savedInstanceState) {
-        addSlide(AppIntroFragment.newInstance("Pied Piper", "WELCOME TO PIED PIPER",
+        addSlide(AppIntroFragment.newInstance("Droid Data", "Droid data is a data visualization tool that transforms quantitative" +
+                        "data to maps",
                 R.drawable.splash,
                  Color.parseColor("#272730")));
 
-        setBarColor(Color.parseColor("#2E9E48"));
-        setSeparatorColor(Color.parseColor("#2E9E48"));
+        setBarColor(Color.parseColor("#D94843"));
+        setSeparatorColor(Color.parseColor("#D94843"));
         showSkipButton(false);
 
 //        setVibrate(true);
@@ -44,7 +45,9 @@ public class Appintro extends AppIntro {
 //        Toast.makeText(getApplicationContext(),"You Done",Toast.LENGTH_SHORT).show();
 
 
-
+Intent a =  new Intent(Myintro.this, MainActivity.class);
+        startActivity(a);
+        finish();
 
     }
 
