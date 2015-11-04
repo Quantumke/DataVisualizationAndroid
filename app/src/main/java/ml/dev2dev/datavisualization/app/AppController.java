@@ -1,4 +1,5 @@
 package ml.dev2dev.datavisualization.app;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;

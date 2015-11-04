@@ -1,37 +1,41 @@
 package ml.dev2dev.datavisualization;
 
-        import android.app.ProgressDialog;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.design.widget.Snackbar;
-        import android.support.design.widget.TextInputLayout;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.android.volley.Request;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.StringRequest;
-        import  ml.dev2dev.datavisualization.app.AppConfig;
-        import  ml.dev2dev.datavisualization.app.AppController;
-        import  ml.dev2dev.datavisualization.app.SessionManager;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import ml.dev2dev.datavisualization.app.AppConfig;
+import ml.dev2dev.datavisualization.app.AppController;
+import ml.dev2dev.datavisualization.app.SessionManager;
+import ml.dev2dev.datavisualization.app.AppConfig;
+import ml.dev2dev.datavisualization.app.AppController;
+import ml.dev2dev.datavisualization.app.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import ml.dev2dev.datavisualization.Login;
+import ml.dev2dev.datavisualization.app.AppController;
 
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
-
-        import java.util.HashMap;
-        import java.util.Map;
-
-/**
- * Created by gowthamandroiddeveloper Chandrasekar on 04-09-2015.
- */
-public class regiteractivity extends AppCompatActivity implements View.OnClickListener {
+public class Register  extends AppCompatActivity implements View.OnClickListener {
 
     TextView tvLogin;
     TextInputLayout fullName;
@@ -49,7 +53,7 @@ public class regiteractivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_regiteractivity);
+        setContentView(R.layout.content_regiteractivity);
 
         //initializing Views
         registerButton = (Button) findViewById(R.id.register_button);
@@ -61,9 +65,7 @@ public class regiteractivity extends AppCompatActivity implements View.OnClickLi
         etPasswordRegister = (EditText) findViewById(R.id.password_register);
         tvLogin = (TextView) findViewById(R.id.tv_signin);
 
-        //setting toolbar
-        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolBar);
+
 
         tvLogin.setOnClickListener(this);
         registerButton.setOnClickListener(this);
@@ -79,7 +81,7 @@ public class regiteractivity extends AppCompatActivity implements View.OnClickLi
         // Check if user is already logged in
         if (session.isLoggedIn()) {
             // User is already logged in. Move to main activity
-            Intent intent = new Intent(regiteractivity.this,
+            Intent intent = new Intent(Register.this,
                     MainActivity.class);
             startActivity(intent);
             finish();
@@ -119,16 +121,15 @@ public class regiteractivity extends AppCompatActivity implements View.OnClickLi
                         String created_at = user
                                 .getString("created_at");
 
-                        //writing the value to sharedpreference which we will be showing in main screen
-                        AppController.setString(regiteractivity.this, "uid", uid);
-                        AppController.setString(regiteractivity.this, "name", name);
-                        AppController.setString(regiteractivity.this, "email", email);
-                        AppController.setString(regiteractivity.this, "created_at", created_at);
+                        AppController.setString(Register.this, "uid", uid);
+                        AppController.setString(Register.this, "name", name);
+                        AppController.setString(Register.this, "email", email);
+                        AppController.setString(Register.this, "created_at", created_at);
 
                         // Launch login activity
                         Intent intent = new Intent(
-                                regiteractivity.this,
-                                LoginActivity.class);
+                                Register.this,
+                                Login.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -187,7 +188,7 @@ public class regiteractivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.tv_signin:
                 Intent intent = new Intent(getApplicationContext(),
-                        LoginActivity.class);
+                        Login.class);
                 startActivity(intent);
                 finish();
             case R.id.register_button:
