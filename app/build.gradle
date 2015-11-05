@@ -10,6 +10,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
     }
     buildTypes {
         release {
@@ -30,4 +32,8 @@ dependencies {
     compile 'com.github.paolorotolo:appintro:3.2.0'
     compile 'com.android.support:design:22.2.1'
     compile 'com.mcxiaoke.volley:library:1.0.18'
+    compile 'com.ms-square:etsyblur:0.1.2'
+    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
+
 }

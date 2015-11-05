@@ -4,6 +4,7 @@ package ml.dev2dev.datavisualization;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -29,6 +30,7 @@ import java.util.Map;
 import ml.dev2dev.datavisualization.app.AppConfig;
 import ml.dev2dev.datavisualization.app.AppController;
 import ml.dev2dev.datavisualization.app.SessionManager;
+import ml.dev2dev.datavisualization.BlurBehind;
 
 /**
  * Created by benson on 10/13/15.
@@ -50,6 +52,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        BlurBehind.getInstance()
+                .withAlpha(80)
+                .withFilterColor(Color.parseColor("#0075c0"))
+                .setBackground(this);
+
         //initializing toolbar
         Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
